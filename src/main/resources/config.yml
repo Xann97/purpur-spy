@@ -1,0 +1,48 @@
+#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#
+#                                             #
+#                PurpurSpy v0.1               #
+#               Author - Xann97               #
+#                                             #
+#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#
+
+#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#
+#                  Settings                   #
+#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#
+
+#If you dont want hover messages, keep them empty.
+
+#%player% = player, who did something.
+#%blockX% %blockY% %blockZ% = location of player / sign.
+#%world% = world, where player did something.
+#%line1% %line2% %line3% %line4% = text from sign.
+#%title% = title of signed book.
+#%text% = pages from book.
+#%item% = item renamed in anvil.
+#%renamedto% = new name of item renamed in anvil.
+
+Prefix: "&8[&5PurpurSpy&8]&r"
+
+Sign:
+  Ignore-empty: true
+  Message-on-enable: "%prefix% &7enabled sign spy."
+  Message-on-disable: "%prefix% &7disabled sign spy."
+  Message-on-place: "%prefix% &7%player% placed a sign.\n&8(&7Hover over this text for more information.&8)"
+  Hover-message: "&7Player: &5%player%\n&7World: &5%world%\n&7Location: &8X&5%blockX% &8Y&5%blockY% &8Z&5%blockZ%\n\n&7Text\n&7Line 1: &5%line1%\n&7Line 2: &5%line2%\n&7Line 3: &5%line3%\n&7Line 4: &5%line4%"
+Book:
+  Ignore-empty: true
+  Message-on-enable: "%prefix% &7enabled book spy."
+  Message-on-disable: "%prefix% &7disabled book spy."
+  Message-on-edit: "%prefix% &7%player% edited a book.\n&8(&7Hover over this text for more information.&8)"
+  Hover-message: "&7Author: &5%player%\n\n&7Title: &5%title%\n&7Text\n&5%text%"
+  No-title: "&7None"
+Anvil:
+  Message-on-enable: "%prefix% &7enabled anvil spy."
+  Message-on-disable: "%prefix% &7disabled anvil spy."
+  Message-on-rename: "%prefix% &7%player% renamed a item in a anvil.\n&8(&7Hover over this text for more information.&8)"
+  Hover-message: "&7Player: &5%player%\n&7Item: &5%item%\n&7Renamed to: &5%renamedto%"
+
+Other-messages:
+  No-permission: "%prefix% &7you dont have permission to use this command."
+  Reload: "%prefix% &7config has been reloaded."
+  Unknown-command: "%prefix% &7command not found."
+  Not-a-player: "%prefix% &7you can use this command only in game."

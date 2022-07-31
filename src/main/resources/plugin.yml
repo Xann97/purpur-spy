@@ -1,0 +1,40 @@
+name: PurpurSpy
+version: '${project.version}'
+main: me.xann.purpurspy.PurpurSpy
+api-version: 1.15
+authors: [ Xann97 ]
+description: Plugin for spying on players.
+
+commands:
+  purpurspy:
+    description: Sends message with other commands from this plugin.
+    usage: /<command>
+  purpurspy reload:
+    description: Reloads plugin config.
+    usage: /<command> reload
+  purpurspy help:
+    description: Sends message with other commands from this plugin.
+    usage: /<command> help
+  purpurspy sign:
+    description: Enables/Disables sign spy.
+    usage: /<command> sign
+  purpurspy book:
+    description: Enables/Disables book spy.
+    usage: /<command> book
+  purpurspy anvil:
+    description: Enables/Disables anvil spy.
+    usage: /<command> anvil
+
+permissions:
+  purpurspy.reload:
+    description: Allows you to reload the plugin.
+    default: op
+  purpurspy.sign:
+    description: Allows you to spy signs.
+    default: op
+  purpurspy.book:
+    description: Allows you to spy books.
+    default: op
+  purpurspy.anvil:
+    description: Allows you to spy anvils.
+    default: op
