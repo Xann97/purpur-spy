@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2022 Xann97
+ */
+
 package me.xann.purpurspy;
 
 import java.util.ArrayList;
