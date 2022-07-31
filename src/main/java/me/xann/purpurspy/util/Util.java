@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2022 Xann97
+ */
+
 package me.xann.purpurspy.util;
 
 import net.md_5.bungee.api.chat.ComponentBuilder;
