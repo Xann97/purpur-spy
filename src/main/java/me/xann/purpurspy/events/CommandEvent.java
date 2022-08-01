@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2022 Xann97
+ */
+
 package me.xann.purpurspy.events;
 
 import me.xann.purpurspy.PurpurCommand;
