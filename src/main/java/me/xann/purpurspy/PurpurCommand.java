@@ -21,6 +21,7 @@ public class PurpurCommand implements CommandExecutor {
     public static List<String> signList = new ArrayList<>();
     public static List<String> bookList = new ArrayList<>();
     public static List<String> anvilList = new ArrayList<>();
+    public static List<String> commandList = new ArrayList<>();
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -37,9 +38,7 @@ public class PurpurCommand implements CommandExecutor {
                     s.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("Other-messages.No-permission")).replace("%prefix%", Objects.requireNonNull(plugin.getConfig().getString("Prefix")))));
                 }
             } else {
-                plugin.getConfig().options().copyDefaults(true);
-                plugin.reloadConfig();
-                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("Other-messages.Reload")).replace("%prefix%", Objects.requireNonNull(plugin.getConfig().getString("Prefix")))));
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("Other-messages.Not-a-player")).replace("%prefix%", Objects.requireNonNull(plugin.getConfig().getString("Prefix")))));
             }
         } else if (args[0].equalsIgnoreCase("sign")) {
             if (sender instanceof Player) {
@@ -86,7 +85,22 @@ public class PurpurCommand implements CommandExecutor {
                 } else {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("Other-messages.No-permission")).replace("%prefix%", Objects.requireNonNull(plugin.getConfig().getString("Prefix")))));
                 }
-
+            } else {
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("Other-messages.Not-a-player")).replace("%prefix%", Objects.requireNonNull(plugin.getConfig().getString("Prefix")))));
+            }
+        } else if (args[0].equalsIgnoreCase("command")) {
+            if (sender instanceof Player) {
+                if (sender.hasPermission("purpurspy.command") || sender.isOp()) {
+                    if (commandList.contains(sender.getName())) {
+                        commandList.remove(sender.getName());
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("Command.Message-on-disable")).replace("%prefix%", Objects.requireNonNull(plugin.getConfig().getString("Prefix")))));
+                    } else {
+                        commandList.add(sender.getName());
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("Command.Message-on-enable")).replace("%prefix%", Objects.requireNonNull(plugin.getConfig().getString("Prefix")))));
+                    }
+                } else {
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("Other-messages.No-permission")).replace("%prefix%", Objects.requireNonNull(plugin.getConfig().getString("Prefix")))));
+                }
             } else {
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("Other-messages.Not-a-player")).replace("%prefix%", Objects.requireNonNull(plugin.getConfig().getString("Prefix")))));
             }

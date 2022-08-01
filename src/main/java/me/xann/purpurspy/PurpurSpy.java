@@ -25,6 +25,7 @@ public final class PurpurSpy extends JavaPlugin {
         plugin.getServer().getPluginManager().registerEvents(new SignEvent(), this);
         plugin.getServer().getPluginManager().registerEvents(new BookEvent(), this);
         plugin.getServer().getPluginManager().registerEvents(new AnvilEvent(), this);
+        plugin.getServer().getPluginManager().registerEvents(new CommandEvent(), this);
     }
 
 }

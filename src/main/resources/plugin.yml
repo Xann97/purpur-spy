@@ -7,23 +7,8 @@ description: Plugin for spying on players.
 
 commands:
   purpurspy:
-    description: Sends message with other commands from this plugin.
+    description: Plugins main command.
     usage: /<command>
-  purpurspy reload:
-    description: Reloads plugin config.
-    usage: /<command> reload
-  purpurspy help:
-    description: Sends message with other commands from this plugin.
-    usage: /<command> help
-  purpurspy sign:
-    description: Enables/Disables sign spy.
-    usage: /<command> sign
-  purpurspy book:
-    description: Enables/Disables book spy.
-    usage: /<command> book
-  purpurspy anvil:
-    description: Enables/Disables anvil spy.
-    usage: /<command> anvil
 
 permissions:
   purpurspy.reload:

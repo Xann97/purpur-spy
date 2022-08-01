@@ -19,6 +19,7 @@
 #%text% = pages from book.
 #%item% = item renamed in anvil.
 #%renamedto% = new name of item renamed in anvil.
+#%command% = command that player used.
 
 Prefix: "&8[&5PurpurSpy&8]&r"
 
@@ -40,6 +41,11 @@ Anvil:
   Message-on-disable: "%prefix% &7disabled anvil spy."
   Message-on-rename: "%prefix% &7%player% renamed a item in a anvil.\n&8(&7Hover over this text for more information.&8)"
   Hover-message: "&7Player: &5%player%\n&7Item: &5%item%\n&7Renamed to: &5%renamedto%"
+Command:
+  Message-on-enable: "%prefix% &7enabled command spy."
+  Message-on-disable: "%prefix% &7disabled command spy."
+  Message-on-command: "%prefix% &7%player% used command.\n&8(&7Hover over this text for more information.&8)"
+  Hover-message: "&7Player: &5%player%\n&7Command: &5%command%"
 
 Other-messages:
   No-permission: "%prefix% &7you dont have permission to use this command."
