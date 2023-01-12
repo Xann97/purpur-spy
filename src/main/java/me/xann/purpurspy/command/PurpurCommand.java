@@ -150,9 +150,6 @@ public class PurpurCommand implements CommandExecutor, TabExecutor {
             if (sender.hasPermission("purpurspy.reload")) {
                 arguments.add("reload");
             }
-            if (sender.hasPermission("purpurspy.information")) {
-                arguments.add("information");
-            }
             if (sender.hasPermission("purpurspy.all")) {
                 arguments.add("all");
             }
