@@ -1,6 +1,6 @@
 #x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#
 #                                             #
-#                PurpurSpy v0.1               #
+#                PurpurSpy v0.3               #
 #               Author - Xann97               #
 #                                             #
 #x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#
@@ -9,16 +9,25 @@
 #                  Settings                   #
 #x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#x#
 
-#If you dont want hover messages, keep them empty.
+#If you don't want hover messages, keep them empty.
 
+# All
 #%player% = player, who did something.
 #%blockX% %blockY% %blockZ% = location of player / sign.
 #%world% = world, where player did something.
+
+# Sign
 #%line1% %line2% %line3% %line4% = text from sign.
+
+# Book
 #%title% = title of signed book.
 #%text% = pages from book.
+
+# Anvil
 #%item% = item renamed in anvil.
 #%renamedto% = new name of item renamed in anvil.
+
+# Command
 #%command% = command that player used.
 
 Prefix: "&8[&5PurpurSpy&8]&r"
@@ -48,7 +57,9 @@ Command:
   Hover-message: "&7Player: &5%player%\n&7Command: &5%command%"
 
 Other-messages:
-  No-permission: "%prefix% &7you dont have permission to use this command."
+  No-permission: "%prefix% &7you don't have permission to use this command."
   Reload: "%prefix% &7config has been reloaded."
   Unknown-command: "%prefix% &7command not found."
   Not-a-player: "%prefix% &7you can use this command only in game."
+  Enabled-all: "%prefix% &7enabled sign, book, anvil, command spy."
+  Disabled-all: "%prefix% &7disabled sign, book, anvil, command spy."

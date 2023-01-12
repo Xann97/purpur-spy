@@ -5,7 +5,7 @@
 package me.xann.purpurspy.events;
 
 import me.xann.purpurspy.PurpurSpy;
-import me.xann.purpurspy.PurpurCommand;
+import me.xann.purpurspy.command.PurpurCommand;
 import me.xann.purpurspy.util.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -36,18 +36,22 @@ public class SignEvent implements Listener {
         int blockY = loc.getBlockY();
         int blockZ = loc.getBlockZ();
 
-        for (Player admin : Bukkit.getServer().getOnlinePlayers()) {
-            if (PurpurCommand.signList.contains(admin.getName())) {
-                if (plugin.getConfig().getBoolean("Sign.Ignore-empty") && Objects.requireNonNull(line1).isEmpty() && Objects.requireNonNull(line2).isEmpty() && Objects.requireNonNull(line3).isEmpty() && Objects.requireNonNull(line4).isEmpty()) {
-                    return;
-                } else {
-                    String msg = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("Sign.Message-on-place"))).replace("%player%", pName).replace("%world%", world).replace("%blockX%", Integer.toString(blockX)).replace("%blockY%", Integer.toString(blockY)).replace("%blockZ%", Integer.toString(blockZ)).replace("%line1%", line1).replace("%line2%", line2).replace("%line3%", line3).replace("%line4%", line4).replace("\\n", "\n").replace("%prefix%", Objects.requireNonNull(plugin.getConfig().getString("Prefix")));
-                    String hover = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("Sign.Hover-message"))).replace("%player%", pName).replace("%world%", world).replace("%blockX%", Integer.toString(blockX)).replace("%blockY%", Integer.toString(blockY)).replace("%blockZ%", Integer.toString(blockZ)).replace("%line1%", line1).replace("%line2%", line2).replace("%line3%", line3).replace("%line4%", line4).replace("\\n", "\n").replace("%prefix%", Objects.requireNonNull(plugin.getConfig().getString("Prefix")));
-
-                    if (!(hover.isEmpty())) {
-                        admin.spigot().sendMessage(Util.getFormattedHoverMessage(msg, hover));
+        if (e.getPlayer().hasPermission("purpurspy.bypass.sign")) {
+            return;
+        } else {
+            for (Player admin : Bukkit.getServer().getOnlinePlayers()) {
+                if (PurpurCommand.signList.contains(admin.getName()) || PurpurCommand.allList.contains(admin.getName())) {
+                    if (plugin.getConfig().getBoolean("Sign.Ignore-empty") && Objects.requireNonNull(line1).isEmpty() && Objects.requireNonNull(line2).isEmpty() && Objects.requireNonNull(line3).isEmpty() && Objects.requireNonNull(line4).isEmpty()) {
+                        return;
                     } else {
-                        admin.sendMessage(msg);
+                        String msg = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("Sign.Message-on-place"))).replace("%player%", pName).replace("%world%", world).replace("%blockX%", Integer.toString(blockX)).replace("%blockY%", Integer.toString(blockY)).replace("%blockZ%", Integer.toString(blockZ)).replace("%line1%", line1).replace("%line2%", line2).replace("%line3%", line3).replace("%line4%", line4).replace("\\n", "\n").replace("%prefix%", Objects.requireNonNull(plugin.getConfig().getString("Prefix")));
+                        String hover = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("Sign.Hover-message"))).replace("%player%", pName).replace("%world%", world).replace("%blockX%", Integer.toString(blockX)).replace("%blockY%", Integer.toString(blockY)).replace("%blockZ%", Integer.toString(blockZ)).replace("%line1%", line1).replace("%line2%", line2).replace("%line3%", line3).replace("%line4%", line4).replace("\\n", "\n").replace("%prefix%", Objects.requireNonNull(plugin.getConfig().getString("Prefix")));
+
+                        if (!(hover.isEmpty())) {
+                            admin.spigot().sendMessage(Util.getFormattedHoverMessage(msg, hover));
+                        } else {
+                            admin.sendMessage(msg);
+                        }
                     }
                 }
             }

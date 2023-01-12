@@ -14,6 +14,9 @@ permissions:
   purpurspy.reload:
     description: Allows you to reload the plugin.
     default: op
+  purpurspy.all:
+    description: Allows you to spy signs, books, anvils, commands.
+    default: op
   purpurspy.sign:
     description: Allows you to spy signs.
     default: op
@@ -23,3 +26,19 @@ permissions:
   purpurspy.anvil:
     description: Allows you to spy anvils.
     default: op
+  purpurspy.command:
+    description: Allows you to spy commands.
+    default: op
+
+  purpurspy.bypass.sign:
+    description: Allows you to bypass spy on sign.
+    default: false
+  purpurspy.bypass.book:
+    description: Allows you to bypass spy on books.
+    default: false
+  purpurspy.bypass.anvil:
+    description: Allows you to bypass spy on anvils.c
+    default: false
+  purpurspy.bypass.command:
+    description: Allows you to bypass spy on commands.
+    default: false

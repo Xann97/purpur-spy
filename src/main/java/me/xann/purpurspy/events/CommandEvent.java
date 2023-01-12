@@ -4,8 +4,8 @@
 
 package me.xann.purpurspy.events;
 
-import me.xann.purpurspy.PurpurCommand;
 import me.xann.purpurspy.PurpurSpy;
+import me.xann.purpurspy.command.PurpurCommand;
 import me.xann.purpurspy.util.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -25,15 +25,19 @@ public class CommandEvent implements Listener {
         String pName = e.getPlayer().getName();
         String command = e.getMessage();
 
-        for (Player admin : Bukkit.getServer().getOnlinePlayers()) {
-            if (PurpurCommand.commandList.contains(admin.getName())) {
-                String msg = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("Command.Message-on-command"))).replace("%player%", pName).replace("%command%", command).replace("\\n", "\n").replace("%prefix%", Objects.requireNonNull(plugin.getConfig().getString("Prefix")));
-                String hover = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("Command.Hover-message"))).replace("%player%", pName).replace("%command%", command).replace("\\n", "\n").replace("%prefix%", Objects.requireNonNull(plugin.getConfig().getString("Prefix")));
+        if (e.getPlayer().hasPermission("purpurspy.bypass.command")) {
+            return;
+        } else {
+            for (Player admin : Bukkit.getServer().getOnlinePlayers()) {
+                if (PurpurCommand.commandList.contains(admin.getName()) || PurpurCommand.allList.contains(admin.getName())) {
+                    String msg = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("Command.Message-on-command"))).replace("%player%", pName).replace("%command%", command).replace("\\n", "\n").replace("%prefix%", Objects.requireNonNull(plugin.getConfig().getString("Prefix")));
+                    String hover = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("Command.Hover-message"))).replace("%player%", pName).replace("%command%", command).replace("\\n", "\n").replace("%prefix%", Objects.requireNonNull(plugin.getConfig().getString("Prefix")));
 
-                if (!(hover.isEmpty())) {
-                    admin.spigot().sendMessage(Util.getFormattedHoverMessage(msg, hover));
-                } else {
-                    admin.sendMessage(msg);
+                    if (!(hover.isEmpty())) {
+                        admin.spigot().sendMessage(Util.getFormattedHoverMessage(msg, hover));
+                    } else {
+                        admin.sendMessage(msg);
+                    }
                 }
             }
         }

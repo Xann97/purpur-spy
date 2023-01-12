@@ -3,7 +3,7 @@
  */
 
 package me.xann.purpurspy;
-
+import me.xann.purpurspy.command.PurpurCommand;
 import me.xann.purpurspy.events.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
